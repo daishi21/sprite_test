@@ -1,6 +1,7 @@
 //use bevy::app::AppExit;
 //use bevy::input::common_conditions::input_toggle_active;
 //use bevy_inspector_egui::quick::WorldInspectorPlugin;
+use bevy_embedded_assets::EmbeddedAssetPlugin;
 use sprite_test::prelude::*;
 
 fn main() {
@@ -17,7 +18,8 @@ fn main() {
                     }),
                     ..default()
                 })
-                .build(),
+                .build()
+                .add_before::<bevy::asset::AssetPlugin, _>(EmbeddedAssetPlugin),
         )
         .add_plugin(PlayerPlugin)
         .add_plugin(EnemyPlugin)
