@@ -31,6 +31,12 @@ fn spawn_slime(mut commands: Commands, animaitons: Res<Animations>) {
             facing: Facing::Right,
         },
         Name::new("Slime"),
+        RigidBody::Dynamic,
+        LockedAxes::ROTATION_LOCKED_Z,
+        Damping {
+            linear_damping: 100.0,
+            angular_damping: 1.0,
+        },
         Collider::capsule(Vec2::new(0.0, 0.55), Vec2::new(0.0, -0.50), 0.5),
         GamePlayEntity,
         animation,
@@ -52,12 +58,18 @@ fn spawn_naga(mut commands: Commands, animaitons: Res<Animations>) {
             ..Default::default()
         },
         Naga {
-            speed: 1.5,
+            speed: 3.0,
             health: 100.0,
             damage: 10.0,
             facing: Facing::Right,
         },
         Name::new("Naga"),
+        RigidBody::Dynamic,
+        LockedAxes::ROTATION_LOCKED_Z,
+        Damping {
+            linear_damping: 100.0,
+            angular_damping: 1.0,
+        },
         Collider::capsule(Vec2::new(0.0, 0.55), Vec2::new(0.0, -0.50), 0.5),
         GamePlayEntity,
         animation,
